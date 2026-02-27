@@ -1,6 +1,5 @@
-import React from 'react';
-import { FaReact, FaNodeJs, FaDatabase, FaServer } from 'react-icons/fa';
-import { SiExpress, SiTailwindcss } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaDatabase } from 'react-icons/fa';
+import { SiExpress, SiTailwindcss, SiPython, SiHtml5, SiCss3, SiJavascript, SiPostgresql, SiSupabase, SiCodeigniter, SiPhp } from 'react-icons/si';
 import { motion } from 'framer-motion';
 
 const Technologies = () => {
@@ -61,13 +60,92 @@ const Technologies = () => {
           </p>
         </div>
         {/* Tailwind CSS */}
-        <div className="text-center col-span-1 md:col-span-2">
+        <div className="text-center">
           <motion.div {...iconAnimation}>
             <SiTailwindcss className="mx-auto text-6xl text-cyan-400" />
           </motion.div>
           <h2 className="text-3xl font-semibold mt-4">Tailwind CSS</h2>
           <p className="mt-2 text-neutral-300">
             A utility-first CSS framework that allows rapid UI development with pre-built classes.
+          </p>
+        </div>
+        {/* Python */}
+        <div className="text-center">
+          <motion.div {...iconAnimation}>
+            <SiPython className="mx-auto text-6xl text-cyan-400" />
+          </motion.div>
+          <h2 className="text-3xl font-semibold mt-4">Python</h2>
+          <p className="mt-2 text-neutral-300">
+            A high-level programming language that is easy to learn and use.
+          </p>
+        </div>
+        {/* HTML */}
+        <div className="text-center">
+          <motion.div {...iconAnimation}>
+            <SiHtml5 className="mx-auto text-6xl text-cyan-400" />
+          </motion.div>
+          <h2 className="text-3xl font-semibold mt-4">HTML</h2>
+          <p className="mt-2 text-neutral-300">
+            A markup language for creating web pages.
+          </p>
+        </div>
+        {/* CSS */}
+        <div className="text-center">
+          <motion.div {...iconAnimation}>
+            <SiCss3 className="mx-auto text-6xl text-cyan-400" />
+          </motion.div>
+          <h2 className="text-3xl font-semibold mt-4">CSS</h2>
+          <p className="mt-2 text-neutral-300">
+            A style sheet language for creating web pages.
+          </p>
+        </div>
+        {/* PHP */}
+        <div className="text-center">
+          <motion.div {...iconAnimation}>
+            <SiPhp className="mx-auto text-6xl text-cyan-400" />
+          </motion.div>
+          <h2 className="text-3xl font-semibold mt-4">PHP</h2>
+          <p className="mt-2 text-neutral-300">
+            A server-side scripting language for creating web pages.
+          </p>
+        </div>
+        {/* JavaScript */}
+        <div className="text-center">
+          <motion.div {...iconAnimation}>
+            <SiJavascript className="mx-auto text-6xl text-cyan-400" />
+          </motion.div>
+          <h2 className="text-3xl font-semibold mt-4">JavaScript</h2>
+          <p className="mt-2 text-neutral-300">
+            A programming language for creating web pages.
+          </p>
+        </div>
+        {/* PostgreSQL */}
+        <div className="text-center">
+          <motion.div {...iconAnimation}>
+            <SiPostgresql className="mx-auto text-6xl text-cyan-400" />
+          </motion.div>
+          <h2 className="text-3xl font-semibold mt-4">PostgreSQL</h2>
+          <p className="mt-2 text-neutral-300">
+            A relational database management system.
+          </p>
+        </div>
+        {/* Supabase */}
+        <div className="text-center">
+          <motion.div {...iconAnimation}>
+            <SiSupabase className="mx-auto text-6xl text-cyan-400" />
+          </motion.div>
+          <h2 className="text-3xl font-semibold mt-4">Supabase</h2>
+          <p className="mt-2 text-neutral-300">
+            A modern, open-source database platform.
+          </p>
+        </div>
+        <div className="text-center col-span-1 md:col-span-2">
+          <motion.div {...iconAnimation}>
+            <SiCodeigniter className="mx-auto text-6xl text-cyan-400" />
+          </motion.div>
+          <h2 className="text-3xl font-semibold mt-4">CodeIgniter</h2>
+          <p className="mt-2 text-neutral-300">
+            A web framework for building web applications.
           </p>
         </div>
       </div>

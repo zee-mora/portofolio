@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Contact = () => {
   return (
     <div className="border-b border-neutral-800 pb-24">
@@ -19,8 +17,8 @@ const Contact = () => {
         
         <h2 className="text-2xl text-neutral-300 mt-6">Connect with Me</h2>
         <div className="flex justify-center space-x-4 mt-4">
-          <a href="https://https://github.com/zee-mora.com/your-profile" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">GitHub</a>
-          <a href="https://instagram.com/zeeforta" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">Instagram</a>
+          <a href="https://github.com/zee-mora" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">GitHub</a>
+          <a href="https://www.instagram.com/zeedrl__/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">Instagram</a>
         </div>
       </div>
     </div>
