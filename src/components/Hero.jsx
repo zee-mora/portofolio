@@ -23,7 +23,7 @@ const Hero = () => {
             initial="hidden"
             animate="visible"
           >
-            <h1 className="text-5xl lg:text-7xl text-neutral-100 font-light pb-16 tracking-tight lg:mt-16">
+            <h1 className="text-5xl lg:text-7xl text-neutral-100 font-light pb-16 tracking-tight mt-2 lg:mt-16">
               Welcome to <span className="text-cyan-400 font-bold">Zee</span>Portofolio
             </h1>
             <span className="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-4xl tracking-tight text-transparent animate-pulse">
@@ -33,7 +33,7 @@ const Hero = () => {
         </div>
         <div className="w-full lg:w-1/2 lg:p-8">
           <motion.div
-            className="flex justify-center"
+            className="flex justify-center mt-2"
             variants={imageVariants}
             initial="hidden"
             animate="visible"
