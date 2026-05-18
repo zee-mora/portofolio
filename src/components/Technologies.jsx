@@ -1,5 +1,5 @@
 import { FaReact, FaNodeJs, FaDatabase } from 'react-icons/fa';
-import { SiExpress, SiTailwindcss, SiPython, SiHtml5, SiCss3, SiJavascript, SiPostgresql, SiSupabase, SiCodeigniter, SiPhp } from 'react-icons/si';
+import { SiExpress, SiTailwindcss, SiPython, SiHtml5, SiCss3, SiJavascript, SiPostgresql, SiSupabase, SiCodeigniter, SiPhp, SiLaravel } from 'react-icons/si';
 import { motion } from 'framer-motion';
 
 const Technologies = () => {
@@ -19,16 +19,6 @@ const Technologies = () => {
     <div className="border-b border-neutral-800 pb-24">
       <h1 className="my-20 text-center text-4xl font-light">Technologies I Use</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 px-8 md:px-20">
-        {/* MongoDB */}
-        <div className="text-center">
-          <motion.div {...iconAnimation}>
-            <FaDatabase className="mx-auto text-6xl text-cyan-400" />
-          </motion.div>
-          <h2 className="text-3xl font-semibold mt-4">MongoDB</h2>
-          <p className="mt-2 text-neutral-300">
-            A NoSQL database used for storing and retrieving data in a flexible and scalable way.
-          </p>
-        </div>
         {/* Express.js */}
         <div className="text-center">
           <motion.div {...iconAnimation}>
@@ -47,6 +37,26 @@ const Technologies = () => {
           <h2 className="text-3xl font-semibold mt-4">React.js</h2>
           <p className="mt-2 text-neutral-300">
             A JavaScript library for building user interfaces, focusing on reusable components and efficient rendering.
+          </p>
+        </div>
+        {/* Laravel */}
+        <div className="text-center">
+          <motion.div {...iconAnimation}>
+            <SiLaravel className="mx-auto text-6xl text-cyan-400" />
+          </motion.div>
+          <h2 className="text-3xl font-semibold mt-4">Laravel</h2>
+          <p className="mt-2 text-neutral-300">
+            A PHP web framework used for building web applications with an elegant syntax.
+          </p>
+        </div>
+        {/* CodeIgniter */}
+        <div className="text-center">
+          <motion.div {...iconAnimation}>
+            <SiCodeigniter className="mx-auto text-6xl text-cyan-400" />
+          </motion.div>
+          <h2 className="text-3xl font-semibold mt-4">CodeIgniter</h2>
+          <p className="mt-2 text-neutral-300">
+            A web framework for building web applications.
           </p>
         </div>
         {/* Node.js */}
@@ -70,7 +80,7 @@ const Technologies = () => {
           </p>
         </div>
         {/* Python */}
-        <div className="text-center">
+        {/* <div className="text-center">
           <motion.div {...iconAnimation}>
             <SiPython className="mx-auto text-6xl text-cyan-400" />
           </motion.div>
@@ -78,7 +88,7 @@ const Technologies = () => {
           <p className="mt-2 text-neutral-300">
             A high-level programming language that is easy to learn and use.
           </p>
-        </div>
+        </div> */}
         {/* HTML */}
         <div className="text-center">
           <motion.div {...iconAnimation}>

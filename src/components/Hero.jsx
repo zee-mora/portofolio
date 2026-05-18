@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'; // Import motion dari framer-motion
-import ProfilePicture from '../assets/profile.png'; // Adjust the path as necessary
+import ProfilePicture from '../assets/Profile.png'; // Adjust the path as necessary
 
 const Hero = () => {
   // Variants untuk animasi
