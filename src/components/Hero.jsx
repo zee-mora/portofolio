@@ -27,7 +27,7 @@ const Hero = () => {
               Welcome to <span className="text-cyan-400 font-bold">Zee</span>Portofolio
             </h1>
             <span className="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-4xl tracking-tight text-transparent animate-pulse">
-              A student of SMK PGRI 3 MALANG
+              Full Stack Developer
             </span>
           </motion.div>
         </div>

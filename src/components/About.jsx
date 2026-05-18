@@ -23,7 +23,7 @@ const About = () => {
         className="text-center text-xl text-neutral-300 leading-relaxed max-w-3xl mx-auto"
       >
         <p className="mb-6">
-          Hello! I'm a student at <span className="text-cyan-400 font-bold">SMK PGRI 3 Malang</span>, currently pursuing a major in <span className="text-cyan-400 font-bold">Rekayasa Perangkat Lunak (Software Engineering)</span>. I am passionate about technology and programming, continuously learning and improving my skills to become a proficient developer.
+          Hello! I'm a <span className="text-cyan-400 font-bold">Full Stack Developer</span> with a background in <span className="text-cyan-400 font-bold">Rekayasa Perangkat Lunak (Software Engineering) In SMK PGRI 3 MALANG</span>. I am passionate about technology and programming, continuously learning and improving my skills to become a proficient developer.
         </p>
         <p className="mb-6">
           My journey in software development has been exciting, filled with new challenges that help me grow. I am enthusiastic about building web applications, especially working with the <span className="text-cyan-400 font-bold">MERN stack</span>, and I aspire to create innovative solutions that can make a difference.
