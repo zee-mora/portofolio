@@ -1,9 +1,124 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;700;800&display=swap');
 
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  font-family: "Inter", sans-serif;
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body {
+    @apply bg-paper font-body text-ink antialiased;
+    /* faint halftone over the whole page */
+    background-image: radial-gradient(rgba(22,19,31,.07) 1px, transparent 1.4px);
+    background-size: 8px 8px;
+  }
+  h1, h2, h3 { @apply font-display tracking-wide; }
+  :focus-visible { outline: 4px solid #e0202b; outline-offset: 3px; }
+  ::selection { background: #e0202b; color: #fff; }
 }
+
+@layer components {
+  /* comic panel: thick ink outline + hard shadow */
+  .panel { @apply border-4 border-ink bg-paper shadow-comic; }
+  .halftone-blue {
+    background-color: #1e4fd6;
+    background-image: radial-gradient(rgba(255,255,255,.22) 2px, transparent 2.5px);
+    background-size: 12px 12px;
+  }
+  .halftone-red {
+    background-color: #e0202b;
+    background-image: radial-gradient(rgba(0,0,0,.18) 2px, transparent 2.5px);
+    background-size: 10px 10px;
+  }
+  .section-title {
+    @apply wobble inline-block -rotate-1 border-4 border-ink bg-comic px-5 py-1 text-4xl text-white shadow-comic-sm sm:text-5xl;
+    text-shadow: 3px 3px 0 #16131f;
+  }
+
+  /* interactive base: smooth lift; press effect works on touch too */
+  .lift {
+    @apply transition-all duration-200 ease-out;
+  }
+  .lift:active { transform: translate(3px, 3px); box-shadow: 0 0 0 0 #16131f; }
+  .btn {
+    @apply lift inline-flex min-h-[44px] items-center justify-center gap-2 border-4 border-ink px-6 py-2 font-display text-2xl tracking-wider shadow-comic-sm;
+  }
+  .btn-red { @apply btn bg-pop text-white; }
+  .btn-paper { @apply btn bg-paper text-ink; }
+
+  /* motion-line underline for nav links */
+  .nav-link { @apply relative inline-flex min-h-[44px] items-center px-3 font-display text-xl tracking-wider; }
+  .nav-link::after {
+    content: ""; position: absolute; left: 8px; right: 8px; bottom: 6px; height: 4px;
+    background: #e0202b; transform: scaleX(0) skewX(-30deg); transform-origin: left;
+    transition: transform .2s ease-out;
+  }
+
+  /* comic burst, revealed on card hover */
+  .burst {
+    position: absolute; top: -18px; right: -18px; width: 64px; height: 64px;
+    background: #e0202b; border: 0; opacity: 0; transform: scale(.4) rotate(-20deg);
+    clip-path: polygon(50% 0,61% 28%,92% 18%,74% 45%,100% 60%,68% 68%,70% 100%,50% 78%,30% 100%,32% 68%,0 60%,26% 45%,8% 18%,39% 28%);
+    transition: opacity .2s, transform .25s; pointer-events: none;
+  }
+}
+
+/* hover only where a real hover exists; touch users get :active + always-visible cues */
+@media (hover: hover) {
+  .lift:hover { transform: translateY(-4px) rotate(-1deg); }
+  .btn:hover { box-shadow: 6px 6px 0 0 #16131f; }
+  .btn-red:hover { background: #b3141d; }
+  .btn-paper:hover { background: #dfe8ff; }
+  .nav-link:hover::after { transform: scaleX(1) skewX(-30deg); }
+  .card:hover .burst { opacity: 1; transform: scale(1) rotate(8deg); }
+  .card:hover { box-shadow: 10px 10px 0 0 #16131f; }
+}
+.nav-link[aria-current="true"]::after { transform: scaleX(1) skewX(-30deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+  .lift:hover, .lift:active { transform: none !important; }
+}
+
+/* footer: drifting shapes + link nudge */
+.float-y { animation: float-y 6s ease-in-out infinite; }
+@keyframes float-y { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-18px) rotate(12deg); } }
+.footer-link { display: inline-flex; min-height: 44px; align-items: center; font-weight: 700; font-size: 1.125rem; transition: transform .2s, color .2s; }
+.footer-link:active { transform: translateX(6px); }
+@media (hover: hover) { .footer-link:hover { transform: translateX(6px); color: #fff; text-decoration: underline wavy #e0202b 2px; } }
+
+/* organic, non-rectangular shapes */
+.wobble { border-radius: 28px 6px 34px 8px / 8px 30px 8px 28px; }
+.blob { border-radius: 58% 42% 55% 45% / 48% 58% 42% 52%; }
+.star-ink, .star-red {
+  clip-path: polygon(50% 0,61% 22%,85% 12%,78% 36%,100% 42%,82% 58%,95% 82%,70% 76%,60% 100%,50% 80%,40% 100%,30% 76%,5% 82%,18% 58%,0 42%,22% 36%,15% 12%,39% 22%);
+}
+.star-ink { background: #16131f; }
+.star-red { background: #e0202b; }
+/* speech-bubble tail */
+.bubble { position: relative; }
+.bubble::after {
+  content: ""; position: absolute; left: 36px; bottom: -34px; width: 40px; height: 34px;
+  background: #16131f; clip-path: polygon(0 0, 100% 0, 15% 100%);
+}
+.bubble::before {
+  content: ""; position: absolute; left: 41px; bottom: -24px; width: 28px; height: 28px; z-index: 1;
+  background: #f7efdc; clip-path: polygon(0 0, 100% 0, 15% 100%);
+}
+/* sawtooth ink edge at the bottom of a section */
+.zig::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 16px; z-index: 5; pointer-events: none;
+  background: linear-gradient(135deg, transparent 75%, #16131f 75%) 0 0 / 32px 16px,
+              linear-gradient(225deg, transparent 75%, #16131f 75%) 0 0 / 32px 16px;
+}
+
+/* hero: slanted, torn-edge blue panel with an ink outline layer behind it */
+.hero-cut { position: absolute; right: 0; bottom: 0; left: 0; height: 48%; clip-path: polygon(0 14%, 100% 0, 100% 100%, 0 100%); }
+.hero-cut-ink { background: #16131f; transform: translateY(-10px); }
+@media (min-width: 768px) {
+  .hero-cut { top: 0; left: auto; height: auto; width: 56%;
+    clip-path: polygon(16% 0, 100% 0, 100% 100%, 6% 100%, 13% 84%, 3% 68%, 12% 52%, 2% 36%, 11% 20%); }
+  .hero-cut-ink { transform: translateX(-12px); }
+}
+.wobble-top { border-radius: 24px 4px 0 0 / 6px 24px 0 0; }

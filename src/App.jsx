@@ -1,28 +1,59 @@
+import { useEffect } from "react";
+import { MotionConfig } from "framer-motion";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import Marquee from "./components/Marquee";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import Projects from "./components/Projects";
 import Technologies from "./components/Technologies";
 import Exprience from "./components/Exprience";
 import Contact from "./components/Contact";
 
-function App() {
+// reducedMotion="user": framer-motion honors the OS reduced-motion setting.
+// GSAP: hero word pop-in, hero photo parallax, section title pops, staggered card reveals.
+// clearProps hands transform back to CSS afterwards so hover effects keep working.
+const useGsapFx = () => {
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const mm = gsap.matchMedia();
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.from(".hw", { yPercent: 110, rotate: -8, opacity: 0, duration: 0.8, ease: "back.out(1.7)", stagger: 0.12, clearProps: "all" });
+      gsap.to(".hero-photo", { yPercent: -10, ease: "none", scrollTrigger: { trigger: "#top", start: "top top", end: "bottom top", scrub: true } });
+      gsap.utils.toArray(".section-title").forEach((t) =>
+        gsap.from(t, { scrollTrigger: { trigger: t, start: "top 88%" }, scale: 0.5, rotate: -10, opacity: 0, duration: 0.6, ease: "back.out(2)", clearProps: "transform,opacity" })
+      );
+      gsap.set(".card", { opacity: 0, y: 70 });
+      ScrollTrigger.batch(".card", {
+        start: "top 90%",
+        once: true,
+        onEnter: (b) => gsap.to(b, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power3.out", clearProps: "transform,opacity" }),
+      });
+    });
+    return () => mm.revert();
+  }, []);
+};
+
+const App = () => {
+  useGsapFx();
   return (
-    <>
-      <div className="overflow-x-hidden text-neutral-300 antialiased selection:bg-cyan-300 selection:text-cyan-900">
-        <div className="fixed top-0 -z-10 h-full w-full">
-          <div className="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
-        </div>
-        <div className="container mx-auto px-8">
-          <Navbar />
-          <Hero />
-          <About />
-          <Technologies />
-          <Exprience />
-          <Contact />
-        </div>
-      </div>
-    </>
+  <MotionConfig reducedMotion="user">
+    <div className="overflow-x-hidden">
+      <a href="#about" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-pop focus:p-3 focus:text-white">Skip to content</a>
+      <Navbar />
+      <main>
+        <Hero />
+        <Marquee />
+        <About />
+        <Projects />
+        <Technologies />
+        <Exprience />
+        <Contact />
+      </main>
+    </div>
+  </MotionConfig>
   );
-}
+};
 
 export default App;
